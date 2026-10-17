@@ -7,13 +7,13 @@
             <StackPanel>
                 <TextBlock Text="Datos de la cuenta" Style="{StaticResource tituloTarjeta}"/>
                 <TextBlock Text="Nombre" Style="{StaticResource etiqueta}"/>
-                <TextBlock Text="{Binding Nombre}" FontFamily="Montserrat" FontSize="13" Foreground="{StaticResource contentTextColor}"/>
+                <TextBlock Text="{Binding Nombre}" FontFamily="{StaticResource fuente}" FontSize="13" Foreground="{StaticResource contentTextColor}"/>
                 <TextBlock Text="Usuario" Style="{StaticResource etiqueta}"/>
-                <TextBlock Text="{Binding Usuario}" FontFamily="Montserrat" FontSize="13" Foreground="{StaticResource contentTextColor}"/>
+                <TextBlock Text="{Binding Usuario}" FontFamily="{StaticResource fuente}" FontSize="13" Foreground="{StaticResource contentTextColor}"/>
                 <TextBlock Text="Cargo" Style="{StaticResource etiqueta}"/>
-                <TextBlock Text="{Binding Cargo}" FontFamily="Montserrat" FontSize="13" Foreground="{StaticResource contentTextColor}"/>
+                <TextBlock Text="{Binding Cargo}" FontFamily="{StaticResource fuente}" FontSize="13" Foreground="{StaticResource contentTextColor}"/>
                 <TextBlock Text="Permiso" Style="{StaticResource etiqueta}"/>
-                <TextBlock Text="{Binding Rol}" FontFamily="Montserrat" FontSize="13" Foreground="{StaticResource contentTextColor}"/>
+                <TextBlock Text="{Binding Rol}" FontFamily="{StaticResource fuente}" FontSize="13" Foreground="{StaticResource contentTextColor}"/>
             </StackPanel>
         </Border>
 

@@ -43,7 +43,7 @@
                                     </Grid.ColumnDefinitions>
                                     <CheckBox Content="{Binding Texto}" IsChecked="{Binding Incluir}" Margin="0"/>
                                     <TextBlock Grid.Column="1" Text="{Binding Precio}" TextAlignment="Right"
-                                               FontFamily="Montserrat" FontSize="12.5" Foreground="{StaticResource contentTextColor}"/>
+                                               FontFamily="{StaticResource fuente}" FontSize="12.5" Foreground="{StaticResource contentTextColor}"/>
                                 </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
@@ -74,9 +74,9 @@
                                         <ColumnDefinition Width="30"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="{Binding Cantidad, StringFormat={}{0} ×}" Style="{StaticResource textoSecundario}"/>
-                                    <TextBlock Grid.Column="1" Text="{Binding Descripcion}" FontFamily="Montserrat" FontSize="12.5"
+                                    <TextBlock Grid.Column="1" Text="{Binding Descripcion}" FontFamily="{StaticResource fuente}" FontSize="12.5"
                                                Foreground="{StaticResource contentTextColor}"/>
-                                    <TextBlock Grid.Column="2" Text="{Binding Subtotal}" TextAlignment="Right" FontFamily="Montserrat"
+                                    <TextBlock Grid.Column="2" Text="{Binding Subtotal}" TextAlignment="Right" FontFamily="{StaticResource fuente}"
                                                FontSize="12.5" Foreground="{StaticResource contentTextColor}"/>
                                     <Button Grid.Column="3" Style="{StaticResource iconButton}" Tag="{StaticResource errorColor}"
                                             Foreground="{StaticResource contentMutedColor}" ToolTip="Quitar"
@@ -108,9 +108,9 @@
                             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SubtotalGravado}" TextAlignment="Right" Style="{StaticResource textoSecundario}"/>
                             <TextBlock Grid.Row="2" Text="IVA 15 %" Style="{StaticResource textoSecundario}"/>
                             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Iva}" TextAlignment="Right" Style="{StaticResource textoSecundario}"/>
-                            <TextBlock Grid.Row="3" Text="Total" FontFamily="Montserrat" FontSize="15" FontWeight="SemiBold"
+                            <TextBlock Grid.Row="3" Text="Total" FontFamily="{StaticResource fuente}" FontSize="15" FontWeight="SemiBold"
                                        Foreground="{StaticResource contentTextColor}" Margin="0,6,0,0"/>
-                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Total}" TextAlignment="Right" FontFamily="Montserrat"
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Total}" TextAlignment="Right" FontFamily="{StaticResource fuente}"
                                        FontSize="15" FontWeight="SemiBold" Foreground="{StaticResource contentTextColor}" Margin="0,6,0,0"/>
                         </Grid>
                     </Border>

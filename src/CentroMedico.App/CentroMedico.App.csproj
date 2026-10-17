@@ -9,7 +9,7 @@
     <Nullable>enable</Nullable>
     <RootNamespace>CentroMedico.App</RootNamespace>
     <AssemblyName>CentroMedico</AssemblyName>
-    <ApplicationIcon>medical-report_4290015.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\centro-medico.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="medical-report_4290015.ico" />
+    <Resource Include="Assets\centro-medico.ico" />
+    <Resource Include="Fonts\*.ttf" />
     <None Update="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 

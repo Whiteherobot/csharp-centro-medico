@@ -7,6 +7,7 @@
         xmlns:conv="clr-namespace:CentroMedico.App.Converters"
         Title="Centro Médico" Height="700" Width="1150"
         MinHeight="600" MinWidth="1000"
+        Icon="/Assets/centro-medico.ico"
         WindowStyle="None"
         ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen"
@@ -58,7 +59,7 @@
                         <TextBlock Text="Centro Médico"
                                    Foreground="{StaticResource titleColor2}"
                                    FontSize="18"
-                                   FontFamily="Montserrat"
+                                   FontFamily="{StaticResource fuente}"
                                    FontWeight="Medium"
                                    VerticalAlignment="Center"
                                    Margin="10,0,0,0"/>
@@ -67,14 +68,14 @@
                     <!--Usuario y salida-->
                     <StackPanel DockPanel.Dock="Bottom" Margin="22,0,15,20">
                         <TextBlock Text="{Binding NombreUsuario}" Foreground="{StaticResource titleColor2}"
-                                   FontFamily="Montserrat" FontSize="12.5" FontWeight="Medium" TextTrimming="CharacterEllipsis"/>
+                                   FontFamily="{StaticResource fuente}" FontSize="12.5" FontWeight="Medium" TextTrimming="CharacterEllipsis"/>
                         <TextBlock Text="{Binding Rol}" Foreground="{StaticResource plainTextColor1}"
-                                   FontFamily="Montserrat" FontSize="11" Margin="0,2,0,10"/>
+                                   FontFamily="{StaticResource fuente}" FontSize="11" Margin="0,2,0,10"/>
                         <Button Style="{StaticResource iconButton}" Tag="{StaticResource color4}" Width="Auto"
                                 HorizontalAlignment="Left" Command="{Binding CerrarSesionCommand}">
                             <StackPanel Orientation="Horizontal">
                                 <fa:IconImage Icon="RightFromBracket" Style="{StaticResource iconButtonIcon}" Width="13" Height="13"/>
-                                <TextBlock Text="Cerrar sesión" FontFamily="Montserrat" FontSize="11.5" Margin="8,0,0,0"
+                                <TextBlock Text="Cerrar sesión" FontFamily="{StaticResource fuente}" FontSize="11.5" Margin="8,0,0,0"
                                            Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/>
                             </StackPanel>
                         </Button>
@@ -119,7 +120,7 @@
                         <Border HorizontalAlignment="Left" Margin="30,8,0,0" Padding="8,2" CornerRadius="4"
                                 Background="#FFF1D6"
                                 Visibility="{Binding ModoDemo, Converter={StaticResource BooleanToVisibility}}">
-                            <TextBlock Text="Modo demo: los datos se pierden al cerrar" FontFamily="Montserrat"
+                            <TextBlock Text="Modo demo: los datos se pierden al cerrar" FontFamily="{StaticResource fuente}"
                                        FontSize="10.5" Foreground="#7A5200"/>
                         </Border>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,6,0">
@@ -141,7 +142,7 @@
                         <TextBlock Text="{Binding OpcionActual.Titulo}"
                                    Foreground="{StaticResource contentTextColor}"
                                    FontSize="19"
-                                   FontFamily="Montserrat"
+                                   FontFamily="{StaticResource fuente}"
                                    FontWeight="SemiBold"
                                    VerticalAlignment="Center"
                                    Margin="10,0,0,0"/>
