@@ -39,6 +39,10 @@ public class VistasTests
         // Los recursos de App.xaml (colores, estilos y la fuente) se cargan una vez por hilo.
         if (Application.Current is null)
         {
+            // Las rutas relativas como /Styles/... se buscan en el ensamblado de recursos, que en
+            // el proceso de pruebas sería este y no el de la app.
+            // No se puede leer antes de asignarlo: el getter fija el ensamblado de entrada.
+            Application.ResourceAssembly = typeof(App).Assembly;
             var app = new App { ShutdownMode = ShutdownMode.OnExplicitShutdown };
             app.InitializeComponent();
         }
