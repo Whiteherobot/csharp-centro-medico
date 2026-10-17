@@ -10,4 +10,8 @@
     <ProjectReference Include="..\CentroMedico.Core\CentroMedico.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.26.301" />
+  </ItemGroup>
+
 </Project>
