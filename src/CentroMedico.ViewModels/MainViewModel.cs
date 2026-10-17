@@ -22,7 +22,10 @@ public class MainViewModel : ViewModelBase
             new("Pacientes", "HospitalUser", () => new PacientesViewModel(contexto)),
         };
         if (sesion.EsAdministrador)
+        {
+            opciones.Add(new("Servicios", "Stethoscope", () => new ServiciosViewModel(contexto)));
             opciones.Add(new("Personal", "UserDoctor", () => new PersonalViewModel(contexto, sesion)));
+        }
         opciones.Add(new("Mi cuenta", "UserGear", () => new CuentaViewModel(contexto, sesion)));
         Opciones = opciones;
 
