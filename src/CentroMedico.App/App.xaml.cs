@@ -1,4 +1,6 @@
+using System.Globalization;
 using System.Windows;
+using System.Windows.Markup;
 using System.Windows.Threading;
 using CentroMedico.App.Views;
 using CentroMedico.Datos.Oracle;
@@ -10,6 +12,18 @@ namespace CentroMedico.App;
 public partial class App : Application
 {
     private Contexto _contexto = null!;
+
+    static App()
+    {
+        // Sin esto WPF formatea fechas y números como en-US (8/20/1990) aunque Windows esté en español.
+        var cultura = CultureInfo.GetCultureInfo("es-EC");
+        CultureInfo.DefaultThreadCurrentCulture = cultura;
+        CultureInfo.DefaultThreadCurrentUICulture = cultura;
+        CultureInfo.CurrentCulture = cultura;
+        CultureInfo.CurrentUICulture = cultura;
+        FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement),
+            new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(cultura.IetfLanguageTag)));
+    }
 
     private void ApplicationStart(object sender, StartupEventArgs e)
     {
