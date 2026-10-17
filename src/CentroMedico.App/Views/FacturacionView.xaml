@@ -1,0 +1,142 @@
+<UserControl x:Class="CentroMedico.App.Views.FacturacionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="380"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Nueva factura-->
+        <Border Grid.Column="0" Style="{StaticResource tarjeta}" Margin="0,0,16,0">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="Nueva factura" Style="{StaticResource tituloTarjeta}"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Margin="0,0,12,0">
+                            <TextBlock Text="Buscar paciente" Style="{StaticResource etiqueta}" Margin="0,0,0,3"/>
+                            <TextBox Text="{Binding BuscarPaciente, UpdateSourceTrigger=PropertyChanged, Delay=250}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="Paciente" Style="{StaticResource etiqueta}" Margin="0,0,0,3"/>
+                            <ComboBox ItemsSource="{Binding PacientesEncontrados}" DisplayMemberPath="Texto" SelectedValuePath="Valor"
+                                      SelectedValue="{Binding PacienteId}"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <TextBlock Text="Citas atendidas por cobrar" Style="{StaticResource etiqueta}" Margin="0,16,0,4"/>
+                    <TextBlock Text="El paciente no tiene citas pendientes de cobro." Style="{StaticResource textoSecundario}"
+                               Visibility="{Binding SinCitasPorCobrar, Converter={StaticResource BooleanToVisibility}}"/>
+                    <ItemsControl ItemsSource="{Binding CitasPorCobrar}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="90"/>
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox Content="{Binding Texto}" IsChecked="{Binding Incluir}" Margin="0"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Precio}" TextAlignment="Right"
+                                               FontFamily="Montserrat" FontSize="12.5" Foreground="{StaticResource contentTextColor}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <TextBlock Text="Otros servicios" Style="{StaticResource etiqueta}" Margin="0,16,0,3"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox ItemsSource="{Binding Servicios}" DisplayMemberPath="Texto" SelectedValuePath="Valor"
+                                  SelectedValue="{Binding ServicioId}" Margin="0,0,8,0"/>
+                        <TextBox Grid.Column="1" Text="{Binding Cantidad, UpdateSourceTrigger=PropertyChanged}"
+                                 MaxLength="3" TextAlignment="Right" Margin="0,0,8,0" ToolTip="Cantidad"/>
+                        <Button Grid.Column="2" Content="Agregar" Command="{Binding AgregarCommand}"
+                                Style="{StaticResource botonSecundario}" Margin="0"/>
+                    </Grid>
+                    <ItemsControl ItemsSource="{Binding LineasExtra}" Margin="0,6,0,0">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="90"/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Cantidad, StringFormat={}{0} ×}" Style="{StaticResource textoSecundario}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Descripcion}" FontFamily="Montserrat" FontSize="12.5"
+                                               Foreground="{StaticResource contentTextColor}"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding Subtotal}" TextAlignment="Right" FontFamily="Montserrat"
+                                               FontSize="12.5" Foreground="{StaticResource contentTextColor}"/>
+                                    <Button Grid.Column="3" Style="{StaticResource iconButton}" Tag="{StaticResource errorColor}"
+                                            Foreground="{StaticResource contentMutedColor}" ToolTip="Quitar"
+                                            Command="{Binding DataContext.QuitarCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}">
+                                        <fa:IconImage Icon="Xmark" Style="{StaticResource iconButtonIcon}" Width="11" Height="11"/>
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <!--Totales-->
+                    <Border BorderBrush="{StaticResource cardBorderColor}" BorderThickness="0,1,0,0" Margin="0,16,0,0" Padding="0,10,0,0">
+                        <Grid HorizontalAlignment="Right" Width="260">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Subtotal 0 %" Style="{StaticResource textoSecundario}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding SubtotalTarifa0}" TextAlignment="Right" Style="{StaticResource textoSecundario}"/>
+                            <TextBlock Grid.Row="1" Text="Subtotal 15 %" Style="{StaticResource textoSecundario}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SubtotalGravado}" TextAlignment="Right" Style="{StaticResource textoSecundario}"/>
+                            <TextBlock Grid.Row="2" Text="IVA 15 %" Style="{StaticResource textoSecundario}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Iva}" TextAlignment="Right" Style="{StaticResource textoSecundario}"/>
+                            <TextBlock Grid.Row="3" Text="Total" FontFamily="Montserrat" FontSize="15" FontWeight="SemiBold"
+                                       Foreground="{StaticResource contentTextColor}" Margin="0,6,0,0"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Total}" TextAlignment="Right" FontFamily="Montserrat"
+                                       FontSize="15" FontWeight="SemiBold" Foreground="{StaticResource contentTextColor}" Margin="0,6,0,0"/>
+                        </Grid>
+                    </Border>
+
+                    <Button Content="Emitir factura" Command="{Binding EmitirCommand}" Style="{StaticResource botonPrimario}"
+                            HorizontalAlignment="Right" Margin="0,14,0,0"/>
+                    <TextBlock Text="{Binding Mensaje}" Style="{StaticResource mensajeOk}" TextAlignment="Right"/>
+                    <TextBlock Text="{Binding Error}" Style="{StaticResource mensajeError}" TextAlignment="Right"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <!--Facturas emitidas-->
+        <Border Grid.Column="1" Style="{StaticResource tarjeta}">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Top" Text="Facturas emitidas" Style="{StaticResource tituloTarjeta}"/>
+                <Button DockPanel.Dock="Bottom" Content="Exportar comprobante" Command="{Binding ExportarCommand}"
+                        Style="{StaticResource botonSecundario}" HorizontalAlignment="Left" Margin="0,12,0,0"/>
+                <DataGrid ItemsSource="{Binding Facturas}" SelectedItem="{Binding FacturaSeleccionada}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Número" Binding="{Binding Numero}" Width="135"/>
+                        <DataGridTextColumn Header="Paciente" Binding="{Binding Paciente}" Width="*"/>
+                        <DataGridTextColumn Header="Total" Binding="{Binding Total}" Width="80"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
+        </Border>
+    </Grid>
+</UserControl>

@@ -21,6 +21,7 @@ public class MainViewModel : ViewModelBase
             new("Inicio", "House", () => new InicioViewModel(contexto)),
             new("Pacientes", "HospitalUser", () => new PacientesViewModel(contexto)),
             new("Citas", "CalendarCheck", () => new CitasViewModel(contexto)),
+            new("Facturación", "FileInvoiceDollar", () => new FacturacionViewModel(contexto)),
         };
         if (sesion.EsAdministrador)
         {
