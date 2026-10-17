@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\CentroMedico.Core\CentroMedico.Core.csproj" />
     <ProjectReference Include="..\..\src\CentroMedico.Datos\CentroMedico.Datos.csproj" />
+    <ProjectReference Include="..\..\src\CentroMedico.ViewModels\CentroMedico.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
