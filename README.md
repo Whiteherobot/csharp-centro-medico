@@ -5,6 +5,8 @@
 Aplicación de escritorio para la recepción de un centro médico, en C# con WPF
 y Oracle. Proyecto de la UPS de junio y julio de 2024, terminado en 2026.
 
+![Agenda del día](docs/capturas/inicio.png)
+
 - **Pacientes**: búsqueda por cédula o nombre, alta y edición con validación
   de la cédula ecuatoriana (módulo 10), activar o desactivar e historial de
   citas.
@@ -17,6 +19,14 @@ y Oracle. Proyecto de la UPS de junio y julio de 2024, terminado en 2026.
 - **Servicios y personal** (solo administradores): catálogo con precios,
   médicos con especialidad y cuentas de acceso con permiso de recepción o de
   administrador.
+
+| Citas | Facturación |
+|---|---|
+| ![Citas](docs/capturas/citas.png) | ![Facturación](docs/capturas/facturacion.png) |
+| **Pacientes** | **Inicio de sesión** |
+| ![Pacientes](docs/capturas/pacientes.png) | ![Login](docs/capturas/login.png) |
+
+Las capturas las genera el CI en Windows con los datos del modo demo.
 
 ## Cómo correrlo
 
