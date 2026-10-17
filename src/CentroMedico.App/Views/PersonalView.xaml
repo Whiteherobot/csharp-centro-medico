@@ -4,7 +4,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="330"/>
         </Grid.ColumnDefinitions>
 
         <Border Grid.Column="0" Style="{StaticResource tarjeta}" Margin="0,0,16,0">
@@ -23,12 +23,11 @@
                 </Grid>
                 <DataGrid ItemsSource="{Binding Empleados}" SelectedItem="{Binding Seleccionado}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Cédula" Binding="{Binding Cedula}" Width="100"/>
-                        <DataGridTextColumn Header="Apellidos y nombres" Binding="{Binding Nombre}" Width="*"/>
-                        <DataGridTextColumn Header="Cargo" Binding="{Binding Cargo}" Width="135"/>
-                        <DataGridTextColumn Header="Especialidad" Binding="{Binding Especialidad}" Width="120"/>
-                        <DataGridTextColumn Header="Cuenta" Binding="{Binding CuentaTexto}" Width="120"/>
-                        <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="70"/>
+                        <DataGridTextColumn Header="Cédula" Binding="{Binding Cedula}" Width="92"/>
+                        <DataGridTextColumn Header="Apellidos y nombres" Binding="{Binding Nombre}" Width="1.4*" MinWidth="120"/>
+                        <DataGridTextColumn Header="Cargo" Binding="{Binding Cargo}" Width="1.3*"/>
+                        <DataGridTextColumn Header="Cuenta" Binding="{Binding CuentaTexto}" Width="*"/>
+                        <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="62"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </DockPanel>

@@ -4,7 +4,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="340"/>
+            <ColumnDefinition Width="320"/>
         </Grid.ColumnDefinitions>
 
         <!--Listado-->
@@ -24,11 +24,11 @@
                 </Grid>
                 <DataGrid ItemsSource="{Binding Pacientes}" SelectedItem="{Binding Seleccionado}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Cédula" Binding="{Binding Cedula}" Width="100"/>
-                        <DataGridTextColumn Header="Apellidos y nombres" Binding="{Binding Nombre}" Width="*"/>
-                        <DataGridTextColumn Header="Edad" Binding="{Binding EdadTexto}" Width="70"/>
-                        <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="100"/>
-                        <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="75"/>
+                        <DataGridTextColumn Header="Cédula" Binding="{Binding Cedula}" Width="92"/>
+                        <DataGridTextColumn Header="Apellidos y nombres" Binding="{Binding Nombre}" Width="*" MinWidth="150"/>
+                        <DataGridTextColumn Header="Edad" Binding="{Binding EdadTexto}" Width="62"/>
+                        <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="92"/>
+                        <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="62"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </DockPanel>

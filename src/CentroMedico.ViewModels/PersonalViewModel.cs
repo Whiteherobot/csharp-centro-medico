@@ -8,8 +8,9 @@ public record EmpleadoFila(Empleado Empleado, Usuario? Cuenta)
 {
     public string Cedula => Empleado.Cedula;
     public string Nombre => $"{Empleado.Apellidos} {Empleado.Nombres}";
-    public string Cargo => PersonalViewModel.TextoCargo(Empleado.Cargo);
-    public string Especialidad => Empleado.Especialidad ?? "";
+    public string Cargo => Empleado.EsMedico
+        ? $"Médico ({Empleado.Especialidad})"
+        : PersonalViewModel.TextoCargo(Empleado.Cargo);
     public string CuentaTexto => Cuenta is null ? "Sin cuenta" : Cuenta.Activo ? Cuenta.NombreUsuario : $"{Cuenta.NombreUsuario} (desactivada)";
     public string Estado => Empleado.Activo ? "Activo" : "Inactivo";
 }

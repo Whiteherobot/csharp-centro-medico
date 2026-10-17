@@ -4,7 +4,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="340"/>
+            <ColumnDefinition Width="310"/>
         </Grid.ColumnDefinitions>
 
         <!--Agenda-->
@@ -38,11 +38,11 @@
 
                 <DataGrid ItemsSource="{Binding Citas}" SelectedItem="{Binding CitaSeleccionada}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Hora" Binding="{Binding Hora}" Width="60"/>
-                        <DataGridTextColumn Header="Paciente" Binding="{Binding Paciente}" Width="*"/>
+                        <DataGridTextColumn Header="Hora" Binding="{Binding Hora}" Width="55"/>
+                        <DataGridTextColumn Header="Paciente" Binding="{Binding Paciente}" Width="*" MinWidth="110"/>
                         <DataGridTextColumn Header="Médico" Binding="{Binding Medico}" Width="*"/>
                         <DataGridTextColumn Header="Servicio" Binding="{Binding Servicio}" Width="*"/>
-                        <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="160"/>
+                        <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="0.8*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </DockPanel>

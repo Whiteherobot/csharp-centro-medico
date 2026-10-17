@@ -32,7 +32,7 @@ public class PersonalViewModelTests
 
         Assert.Equal("rcabrera", rosa.CuentaTexto);
         Assert.Equal("Sin cuenta", andres.CuentaTexto);
-        Assert.Equal("Médico", andres.Cargo);
+        Assert.Equal("Médico (Medicina general)", andres.Cargo);
     }
 
     [Fact]
