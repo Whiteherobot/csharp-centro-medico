@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  pruebas:
+    name: Núcleo, ViewModels y Oracle
+    runs-on: ubuntu-latest
+    services:
+      oracle:
+        image: gvenzl/oracle-free:23-slim-faststart
+        env:
+          ORACLE_PASSWORD: OracleCi2026
+          APP_USER: pruebas
+          APP_USER_PASSWORD: Pruebas2026
+        ports:
+          - 1521:1521
+        options: >-
+          --health-cmd healthcheck.sh
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Crear el esquema de pruebas
+        run: |
+          docker cp db/01_esquema.sql ${{ job.services.oracle.id }}:/tmp/esquema.sql
+          printf 'WHENEVER SQLERROR EXIT SQL.SQLCODE\n@/tmp/esquema.sql\nEXIT\n' \
+            | docker exec -i ${{ job.services.oracle.id }} sqlplus -s pruebas/Pruebas2026@//localhost/FREEPDB1
+      - name: Pruebas
+        run: dotnet test tests/CentroMedico.Tests --logger "console;verbosity=normal"
+        env:
+          CENTROMEDICO_ORACLE_PRUEBAS: User Id=pruebas;Password=Pruebas2026;Data Source=localhost:1521/FREEPDB1
+
+  windows:
+    name: App WPF
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Compilar
+        run: dotnet build CentroMedico.sln -c Release
+      - name: Pruebas de las vistas
+        run: dotnet test tests/CentroMedico.App.Tests -c Release --no-build
+      - name: Publicar capturas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: capturas
+          path: artifacts/capturas/*.png
+          if-no-files-found: ignore
