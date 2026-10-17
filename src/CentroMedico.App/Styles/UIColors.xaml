@@ -31,8 +31,16 @@
     <SolidColorBrush x:Key="panelColor" Color="#200F53"/>
     <SolidColorBrush x:Key="panelOverColor" Color="#281269"/>
     <SolidColorBrush x:Key="panelActiveColor" Color="#2B1372"/>
-    <!--Button Colors-->
-    <!--TextBox Colors-->
-    <!--Etc-->
-    
+    <!--Área de contenido (clara, para leer tablas y formularios)-->
+    <SolidColorBrush x:Key="contentBackColor" Color="#F3F2F8"/>
+    <SolidColorBrush x:Key="cardBackColor" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="cardBorderColor" Color="#E1DEEE"/>
+    <SolidColorBrush x:Key="contentTextColor" Color="#24203A"/>
+    <SolidColorBrush x:Key="contentMutedColor" Color="#6C6888"/>
+    <SolidColorBrush x:Key="accentColor" Color="#5B3FD6"/>
+    <SolidColorBrush x:Key="accentOverColor" Color="#4A31B8"/>
+    <SolidColorBrush x:Key="okColor" Color="#1E7D4F"/>
+    <SolidColorBrush x:Key="errorColor" Color="#B42335"/>
+    <SolidColorBrush x:Key="rowAltColor" Color="#F8F7FC"/>
+    <SolidColorBrush x:Key="rowSelectedColor" Color="#E6E0FB"/>
 </ResourceDictionary>

@@ -1,0 +1,63 @@
+<UserControl x:Class="CentroMedico.App.Views.InicioView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="{Binding Fecha}" Style="{StaticResource textoSecundario}" FontSize="13" Margin="0,0,0,14"/>
+
+        <!--Resumen del día-->
+        <UniformGrid Grid.Row="1" Columns="4" Margin="0,0,0,16">
+            <Border Style="{StaticResource tarjeta}" Margin="0,0,12,0">
+                <StackPanel>
+                    <TextBlock Text="Citas por atender hoy" Style="{StaticResource etiqueta}" Margin="0,0,0,4"/>
+                    <TextBlock Text="{Binding Reservadas}" Style="{StaticResource cifra}"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource tarjeta}" Margin="0,0,12,0">
+                <StackPanel>
+                    <TextBlock Text="Atendidas hoy" Style="{StaticResource etiqueta}" Margin="0,0,0,4"/>
+                    <TextBlock Text="{Binding Atendidas}" Style="{StaticResource cifra}"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource tarjeta}" Margin="0,0,12,0">
+                <StackPanel>
+                    <TextBlock Text="Facturado hoy" Style="{StaticResource etiqueta}" Margin="0,0,0,4"/>
+                    <TextBlock Text="{Binding FacturadoHoyTexto}" Style="{StaticResource cifra}"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource tarjeta}">
+                <StackPanel>
+                    <TextBlock Text="Pacientes activos" Style="{StaticResource etiqueta}" Margin="0,0,0,4"/>
+                    <TextBlock Text="{Binding PacientesActivos}" Style="{StaticResource cifra}"/>
+                </StackPanel>
+            </Border>
+        </UniformGrid>
+
+        <Border Grid.Row="2" Style="{StaticResource tarjeta}">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Top" Text="Agenda de hoy" Style="{StaticResource tituloTarjeta}"/>
+                <TextBlock DockPanel.Dock="Top" Text="No hay citas registradas para hoy."
+                           Style="{StaticResource textoSecundario}"
+                           Visibility="{Binding SinCitas, Converter={StaticResource BooleanToVisibility}}"/>
+                <DataGrid ItemsSource="{Binding CitasDeHoy}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Hora" Binding="{Binding Hora}" Width="70"/>
+                        <DataGridTextColumn Header="Paciente" Binding="{Binding Paciente}" Width="*"/>
+                        <DataGridTextColumn Header="Médico" Binding="{Binding Medico}" Width="*"/>
+                        <DataGridTextColumn Header="Servicio" Binding="{Binding Servicio}" Width="*"/>
+                        <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="170"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
+        </Border>
+    </Grid>
+</UserControl>

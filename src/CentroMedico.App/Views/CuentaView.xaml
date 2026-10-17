@@ -1,0 +1,38 @@
+<UserControl x:Class="CentroMedico.App.Views.CuentaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+
+        <Border Style="{StaticResource tarjeta}" Width="330" Margin="0,0,16,0" VerticalAlignment="Top">
+            <StackPanel>
+                <TextBlock Text="Datos de la cuenta" Style="{StaticResource tituloTarjeta}"/>
+                <TextBlock Text="Nombre" Style="{StaticResource etiqueta}"/>
+                <TextBlock Text="{Binding Nombre}" FontFamily="Montserrat" FontSize="13" Foreground="{StaticResource contentTextColor}"/>
+                <TextBlock Text="Usuario" Style="{StaticResource etiqueta}"/>
+                <TextBlock Text="{Binding Usuario}" FontFamily="Montserrat" FontSize="13" Foreground="{StaticResource contentTextColor}"/>
+                <TextBlock Text="Cargo" Style="{StaticResource etiqueta}"/>
+                <TextBlock Text="{Binding Cargo}" FontFamily="Montserrat" FontSize="13" Foreground="{StaticResource contentTextColor}"/>
+                <TextBlock Text="Permiso" Style="{StaticResource etiqueta}"/>
+                <TextBlock Text="{Binding Rol}" FontFamily="Montserrat" FontSize="13" Foreground="{StaticResource contentTextColor}"/>
+            </StackPanel>
+        </Border>
+
+        <Border Style="{StaticResource tarjeta}" Width="330" VerticalAlignment="Top">
+            <StackPanel>
+                <TextBlock Text="Cambiar contraseña" Style="{StaticResource tituloTarjeta}"/>
+                <TextBlock Text="Contraseña actual" Style="{StaticResource etiqueta}"/>
+                <PasswordBox x:Name="txtActual" PasswordChanged="Actual_Changed"/>
+                <TextBlock Text="Contraseña nueva" Style="{StaticResource etiqueta}"/>
+                <PasswordBox x:Name="txtNueva" PasswordChanged="Nueva_Changed"/>
+                <TextBlock Text="Repita la contraseña nueva" Style="{StaticResource etiqueta}"/>
+                <PasswordBox x:Name="txtConfirmacion" PasswordChanged="Confirmacion_Changed"/>
+                <TextBlock Text="Mínimo 8 caracteres, con letras y números." Style="{StaticResource textoSecundario}"
+                           FontSize="11" Margin="0,6,0,14"/>
+                <Button Content="Guardar" Command="{Binding CambiarCommand}" Style="{StaticResource botonPrimario}"
+                        HorizontalAlignment="Left"/>
+                <TextBlock Text="{Binding Mensaje}" Style="{StaticResource mensajeOk}"/>
+                <TextBlock Text="{Binding Error}" Style="{StaticResource mensajeError}"/>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>
