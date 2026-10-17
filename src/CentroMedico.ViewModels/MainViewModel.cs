@@ -19,6 +19,7 @@ public class MainViewModel : ViewModelBase
         var opciones = new List<OpcionMenu>
         {
             new("Inicio", "House", () => new InicioViewModel(contexto)),
+            new("Pacientes", "HospitalUser", () => new PacientesViewModel(contexto)),
             new("Mi cuenta", "UserGear", () => new CuentaViewModel(contexto, sesion))
         };
         Opciones = opciones;
