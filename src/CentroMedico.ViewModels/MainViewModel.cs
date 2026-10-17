@@ -20,6 +20,7 @@ public class MainViewModel : ViewModelBase
         {
             new("Inicio", "House", () => new InicioViewModel(contexto)),
             new("Pacientes", "HospitalUser", () => new PacientesViewModel(contexto)),
+            new("Citas", "CalendarCheck", () => new CitasViewModel(contexto)),
         };
         if (sesion.EsAdministrador)
         {

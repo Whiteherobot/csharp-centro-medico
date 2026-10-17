@@ -20,6 +20,7 @@
         <!--Cada ViewModel se muestra con su vista-->
         <DataTemplate DataType="{x:Type vm:InicioViewModel}"><views:InicioView/></DataTemplate>
         <DataTemplate DataType="{x:Type vm:PacientesViewModel}"><views:PacientesView/></DataTemplate>
+        <DataTemplate DataType="{x:Type vm:CitasViewModel}"><views:CitasView/></DataTemplate>
         <DataTemplate DataType="{x:Type vm:ServiciosViewModel}"><views:ServiciosView/></DataTemplate>
         <DataTemplate DataType="{x:Type vm:PersonalViewModel}"><views:PersonalView/></DataTemplate>
         <DataTemplate DataType="{x:Type vm:CuentaViewModel}"><views:CuentaView/></DataTemplate>
