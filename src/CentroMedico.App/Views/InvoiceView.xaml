@@ -1,0 +1,130 @@
+﻿<Page x:Class="CentroMedico.App.Views.InvoiceView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CentroMedico.App.Views"
+      xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+      mc:Ignorable="d" 
+      d:DesignHeight="517.323" d:DesignWidth="800"
+      Title="InvoiceView"
+      ShowsNavigationUI="False">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- Header with Search Bar -->
+        
+
+        <!-- Main Content -->
+        <Border Grid.Row="0" Background="#200F53" CornerRadius="10" Padding="10" Margin="0,0,0,10" Grid.RowSpan="2">
+            <Frame x:Name="mainFrame"
+                   NavigationUIVisibility="Hidden"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch">
+                <Frame.Content>
+                    <Viewbox Height="453" VerticalAlignment="Top" HorizontalAlignment="Center" Width="800" Stretch="Fill">
+                        <Border Height="443" Width="800">
+                            <Grid Margin="0,-1,0,1" HorizontalAlignment="Center" Width="800">
+                                <Grid.BindingGroup>
+                                    <BindingGroup/>
+                                </Grid.BindingGroup>
+                                <Grid.CacheMode>
+                                    <BitmapCache/>
+                                </Grid.CacheMode>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="442*"/>
+                                    <ColumnDefinition Width="171*"/>
+                                    <ColumnDefinition Width="187*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.FocusVisualStyle>
+                                    <Style/>
+                                </Grid.FocusVisualStyle>
+                                <Grid.OpacityMask>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="Black"/>
+                                        <GradientStop Color="#FF1619C1" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Grid.OpacityMask>
+
+                                <TextBox x:Name="txtidPAC" HorizontalAlignment="Left" Margin="21,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" />
+                                <TextBlock HorizontalAlignment="Left" Margin="226,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="343" RenderTransformOrigin="0.518,0.605"
+                                           FontSize="36" FontFamily="Bahnschrift SemiBold SemiCondensed" FontWeight="Bold" Grid.ColumnSpan="2" Foreground="White">
+                                    <Run Language="es-ec" Text="Generacion de Facturas"/>
+                                </TextBlock>
+                                
+                                <TextBlock HorizontalAlignment="Left" Margin="21,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" FontFamily="Bahnschrift SemiCondensed" Height="24" Width="115" Foreground="White">
+                                    <Run Language="es-ec" Text="Datos paciente"/>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="21,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" Height="16" Width="48" Foreground="White">
+                                    <Run Text="Nombre"/>
+                                    <Run Language="es-ec" Text=":"/>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="21,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" Height="14" Width="40" Foreground="White">
+                                    <Run Language="es-ec" Text="Cedula:"/>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="21,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" Height="14" Width="46" Foreground="White">
+                                    <Run Text="Apellido"/>
+                                    <Run Language="es-ec" Text=":"/>
+                                </TextBlock>
+
+                                <TextBlock HorizontalAlignment="Left" Margin="18,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" Height="29" Width="103" Foreground="White">
+                                    <Run Language="es-ec" Text="Correo electronico:"/>
+                                    <LineBreak/><Run Language="es-ec"/>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="21,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" Height="14" Width="47" Foreground="White">
+                                    <Run Text="Te"/>
+                                    <Run Language="es-ec" Text=""/>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="304,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" FontFamily="Bahnschrift SemiCondensed" Height="24" Width="210" Foreground="White" Grid.ColumnSpan="2">
+                                    <Run Text="Datos para la Factura"/>
+                                    <LineBreak/><Run/>
+                                </TextBlock>
+                                <ListBox x:Name="ListConsultas" Margin="302,147,113,262" SelectionChanged="ListBox_SelectionChanged" Grid.ColumnSpan="2"/>
+                                <TextBlock HorizontalAlignment="Left" Margin="338,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" Height="14" Width="99" Foreground="White">
+                                    <Run Text="C"/><Run Language="es-ec" Text="onsultas Citadas:"/>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="315,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" Height="14" Width="87" Foreground="White">
+                                    <Run Text="Precio "/><Run Language="es-ec" Text="Consulta"/><Run Text=":"/>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="309,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" Height="14" Width="95" Foreground="White">
+                                    <Run Language="es-ec" Text="lista de Servicios:"/>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="311,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" Height="29" Width="48" Foreground="White">
+                                    <Run Language="es-ec" Text="Subtotal:"/><LineBreak/><Run Language="es-ec"/>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="315,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" Height="29" Width="21" Foreground="White">
+                                    <Run Language="es-ec" Text="IVA:"/><LineBreak/><Run Language="es-ec"/>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="315,391,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" Height="29" Width="29" Foreground="White">
+                                    <Run Text="T"/><Run Language="es-ec" Text="otal:"/><LineBreak/><Run Language="es-ec"/>
+                                </TextBlock>
+                                <TextBox x:Name="txtnamePAC" HorizontalAlignment="Left" Margin="20,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="17" IsEnabled="True"/>
+                                <TextBox x:Name="txtLastnamePAC" HorizontalAlignment="Left" Margin="21,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" IsEnabled="True"/>
+                                <TextBox x:Name="txtphonePAC" HorizontalAlignment="Left" Margin="21,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" IsEnabled="True"/>
+                                <TextBox x:Name="txtEmailPAC" HorizontalAlignment="Left" Margin="18,337,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" IsEnabled="True"/>
+                                <TextBox x:Name="txtPrecioUni" HorizontalAlignment="Left" Margin="309,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" IsEnabled="True"/>
+                                <TextBox x:Name="txtIVA" HorizontalAlignment="Left" Margin="309,328,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" IsEnabled="False"/>
+                                <TextBox x:Name="txtSubtotal" HorizontalAlignment="Left" Margin="369,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Height="18" IsEnabled="True"/>
+                                <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Margin="359,391,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Height="18" IsEnabled="True"/>
+                                <Button x:Name="BtnBuscarPAC" Content="Buscar Paciente" HorizontalAlignment="Left" Margin="157,156,0,0" VerticalAlignment="Top" Click="BtnBuscarPAC_Click" Height="20" Width="86"/>
+                                <Button x:Name="BtnCalcularTotal" Content="Calcular Total" HorizontalAlignment="Left" Margin="89,370,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.48,0.253" Click="Button_Click" Grid.Column="1" Height="20" Width="74"/>
+                                <Button x:Name="BtnGuardarDatos" Content="Guardar Factura" HorizontalAlignment="Left" Margin="21,395,0,0" VerticalAlignment="Top" Click="BtnGuardarDatos_Click" Height="20" Width="88" BorderBrush="#FF7F6666"/>
+                                <Button x:Name="BtnEnviarBill" Content="Enviar Factura a Email" HorizontalAlignment="Left" Margin="146,395,0,0" VerticalAlignment="Top" Height="20" Width="118" Click="BtnEnviarBill_Click"/>
+                                <ComboBox x:Name="CB_servicios" HorizontalAlignment="Left" Margin="310,228,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged" Height="22"/>
+                                <TextBlock HorizontalAlignment="Left" Margin="65,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="161" RenderTransformOrigin="0.492,0.051" FontFamily="Bahnschrift SemiBold" Grid.Column="1" Height="29" Foreground="White">
+                                    <Run Language="es-ec" Text="Cantidad de citas reservadas:"/>
+                                    <LineBreak/><Run Language="es-ec"/>
+                                </TextBlock>
+                                <TextBox x:Name="txtCitasReservadas" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="92,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Grid.Column="1" Height="17"/>
+                            </Grid>
+                        </Border>
+                    </Viewbox>
+                </Frame.Content>
+            </Frame>
+        </Border>
+    </Grid>
+</Page>
