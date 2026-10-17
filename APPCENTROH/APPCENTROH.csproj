@@ -115,7 +115,6 @@
     <Compile Include="CustomControls\BindablePasswordBox.xaml.cs">
       <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBoracle.cs" />
     <Compile Include="Models\IUserRepository.cs" />
     <Compile Include="Models\UserAccountModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -268,12 +267,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Oracle.ManagedDataAccess.Client.Configuration.Section.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -289,16 +282,7 @@
     <Resource Include="Images\user-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\back-image2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\back-image.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\zyro-image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="zyro-image.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">

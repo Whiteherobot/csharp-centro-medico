@@ -1,5 +1,4 @@
 ﻿using Oracle.ManagedDataAccess.Client;
-using System.Configuration;
 
 namespace APPCENTROH.Repositories
 {
@@ -16,18 +15,5 @@ namespace APPCENTROH.Repositories
         {
             return new OracleConnection(_connectionString);
         }
-    }
-
-    public class DBoracle
-    {
-        string conexionstring = ConfigurationManager.ConnectionStrings["conexion"].ConnectionString;
-
-
-        public void Conectar()
-        {
-            OracleConnection conexion = new OracleConnection(conexionstring);
-
-        }
-
     }
 }
