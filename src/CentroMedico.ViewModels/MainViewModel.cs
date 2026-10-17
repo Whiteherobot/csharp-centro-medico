@@ -20,8 +20,10 @@ public class MainViewModel : ViewModelBase
         {
             new("Inicio", "House", () => new InicioViewModel(contexto)),
             new("Pacientes", "HospitalUser", () => new PacientesViewModel(contexto)),
-            new("Mi cuenta", "UserGear", () => new CuentaViewModel(contexto, sesion))
         };
+        if (sesion.EsAdministrador)
+            opciones.Add(new("Personal", "UserDoctor", () => new PersonalViewModel(contexto, sesion)));
+        opciones.Add(new("Mi cuenta", "UserGear", () => new CuentaViewModel(contexto, sesion)));
         Opciones = opciones;
 
         IrACommand = Comando<OpcionMenu>(IrA);
