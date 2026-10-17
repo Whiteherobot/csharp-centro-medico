@@ -1,0 +1,23 @@
+# Oracle Database Free para desarrollo. La primera vez tarda un par de minutos
+# en crear la base; después levanta en segundos.
+services:
+  oracle:
+    image: gvenzl/oracle-free:23-slim-faststart
+    ports:
+      - "1521:1521"
+    environment:
+      ORACLE_PASSWORD: ${ORACLE_PASSWORD:-OracleLocal2026}
+      APP_USER: centromedico
+      APP_USER_PASSWORD: ${APP_USER_PASSWORD:-CentroMedico2026}
+    volumes:
+      - ./db:/opt/centromedico:ro
+      - ./db/docker/inicializar.sql:/container-entrypoint-initdb.d/inicializar.sql:ro
+      - oracle-datos:/opt/oracle/oradata
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+
+volumes:
+  oracle-datos:
