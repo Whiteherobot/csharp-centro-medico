@@ -7,7 +7,7 @@
         xmlns:conv="clr-namespace:CentroMedico.App.Converters"
         Title="Centro Médico" Height="700" Width="1150"
         MinHeight="600" MinWidth="1000"
-        Icon="/Assets/centro-medico.ico"
+        Icon="/CentroMedico;component/Assets/centro-medico.ico"
         WindowStyle="None"
         ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen"
