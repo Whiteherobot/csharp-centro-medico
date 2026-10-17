@@ -94,4 +94,32 @@ public class AutenticacionServiceTests
         Assert.Throws<ReglaNegocioException>(() => _auth.IniciarSesion("rcabrera", "Turnos2026"));
         _auth.IniciarSesion("rcabrera", "Nueva2027");
     }
+
+    [Fact]
+    public void ElAdministradorRestableceYDesactivaCuentas()
+    {
+        _auth.CrearCuenta(_e.Medico.Id, "admin", "Admin2026", Rol.Administrador);
+        _auth.CrearCuenta(_e.Recepcionista.Id, "rcabrera", "Turnos2026", Rol.Recepcion);
+        var admin = _auth.IniciarSesion("admin", "Admin2026");
+
+        _auth.RestablecerContrasena(admin, _e.Recepcionista.Id, "Olvido2026");
+        _auth.IniciarSesion("rcabrera", "Olvido2026");
+
+        _auth.ConfigurarCuenta(admin, _e.Recepcionista.Id, Rol.Recepcion, activa: false);
+        Assert.Throws<ReglaNegocioException>(() => _auth.IniciarSesion("rcabrera", "Olvido2026"));
+    }
+
+    [Fact]
+    public void NadieSeQuitaSuPropioPermisoNiRecepcionAdministra()
+    {
+        _auth.CrearCuenta(_e.Medico.Id, "admin", "Admin2026", Rol.Administrador);
+        _auth.CrearCuenta(_e.Recepcionista.Id, "rcabrera", "Turnos2026", Rol.Recepcion);
+        var admin = _auth.IniciarSesion("admin", "Admin2026");
+        var recepcion = _auth.IniciarSesion("rcabrera", "Turnos2026");
+
+        Assert.Throws<ReglaNegocioException>(() =>
+            _auth.ConfigurarCuenta(admin, _e.Medico.Id, Rol.Recepcion, activa: true));
+        Assert.Throws<ReglaNegocioException>(() =>
+            _auth.RestablecerContrasena(recepcion, _e.Medico.Id, "Robada2026"));
+    }
 }

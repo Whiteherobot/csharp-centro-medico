@@ -66,6 +66,34 @@ public partial class AutenticacionService(IUsuarioRepository usuarios, IEmpleado
         usuarios.Actualizar(usuario);
     }
 
+    /// <summary>El administrador asigna una clave nueva cuando alguien la olvida.</summary>
+    public void RestablecerContrasena(Sesion administrador, int empleadoId, string nueva)
+    {
+        var usuario = CuentaAdministrable(administrador, empleadoId);
+        ValidarContrasena(nueva);
+        usuario.HashContrasena = HashContrasena.Generar(nueva);
+        usuarios.Actualizar(usuario);
+    }
+
+    public void ConfigurarCuenta(Sesion administrador, int empleadoId, Rol rol, bool activa)
+    {
+        var usuario = CuentaAdministrable(administrador, empleadoId);
+        if (usuario.Id == administrador.Usuario.Id && (!activa || rol != Rol.Administrador))
+            throw new ReglaNegocioException("No puede quitarse el permiso de administrador ni desactivar su propia cuenta.");
+
+        usuario.Rol = rol;
+        usuario.Activo = activa;
+        usuarios.Actualizar(usuario);
+    }
+
+    private Usuario CuentaAdministrable(Sesion administrador, int empleadoId)
+    {
+        if (!administrador.EsAdministrador)
+            throw new ReglaNegocioException("Solo un administrador puede modificar cuentas.");
+        return usuarios.ObtenerPorEmpleado(empleadoId)
+            ?? throw new ReglaNegocioException("El empleado no tiene cuenta.");
+    }
+
     private static void ValidarContrasena(string contrasena)
     {
         if (contrasena.Length < 8 || !contrasena.Any(char.IsLetter) || !contrasena.Any(char.IsDigit))
